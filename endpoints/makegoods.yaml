@@ -37,14 +37,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'schemas/v1/makegoodsSchemas.yaml#/components/schemas/enumerateMakegoodsQuery'
+              $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/enumerateMakegoodsQuery'
       responses:
         '200':
           description: Request processed successfully
           content:
             application/json:
               schema:
-                $ref: 'schemas/v1/makegoodsSchemas.yaml#/components/schemas/enumerateMakegoodsResponse'
+                $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/enumerateMakegoodsResponse'
         default:
           description: Unexpected error occured
           content:
@@ -260,8 +260,8 @@ paths:
               application/json:
                 schema:
                   oneOf:
-                    - $ref: 'schemas/v1/makegoodsSchemas.yaml#/components/schemas/v1/makegoodsSubscribeSGS'
-                    - $ref: 'schemas/v1/makegoodsSchemas.yaml#/components/schemas/v1/makegoodsSubscribeSGSCounterParty'
+                    - $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/makegoodsSubscribeSGS'
+                    - $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/makegoodsSubscribeSGSCounterParty'
           responses:
             '200':
               description: Request processed successfully
@@ -441,8 +441,8 @@ paths:
               application/json:
                 schema:
                   oneOf:
-                    - $ref: 'schemas/v1/makegoodsSchemas.yaml#/components/schemas/v1/makegoodsSubscribeSGS'
-                    - $ref: 'schemas/v1/makegoodsSchemas.yaml#/components/schemas/v1/makegoodsSubscribeSGSCounterParty'
+                    - $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/makegoodsSubscribeSGS'
+                    - $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/makegoodsSubscribeSGSCounterParty'
           responses:
             '200':
               description: Request processed successfully

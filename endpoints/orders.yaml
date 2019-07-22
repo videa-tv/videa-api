@@ -37,14 +37,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'schemas/v1/ordersSchemas.yaml#/components/schemas/enumerateOrdersQuery'
+              $ref: 'schemas/ordersSchemas.yaml#/components/schemas/enumerateOrdersQuery'
       responses:
         '200':
           description: Request processed successfully
           content:
             application/json:
               schema:
-                $ref: 'schemas/v1/ordersSchemas.yaml#/components/schemas/enumerateOrdersResponse'
+                $ref: 'schemas/ordersSchemas.yaml#/components/schemas/enumerateOrdersResponse'
         default:
           description: Unexpected error occured
           content:
@@ -302,8 +302,8 @@ paths:
               application/json:
                 schema:
                   oneOf:
-                    - $ref: 'schemas/v1/ordersSchemas.yaml#/components/schemas/v1/ordersSubscribeSGS'
-                    - $ref: 'schemas/v1/ordersSchemas.yaml#/components/schemas/v1/ordersSubscribeSGSCounterParty'
+                    - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGS'
+                    - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGSCounterParty'
           responses:
             '200':
               description: Request processed successfully
@@ -501,8 +501,8 @@ paths:
               application/json:
                 schema:
                   oneOf:
-                    - $ref: 'schemas/v1/ordersSchemas.yaml#/components/schemas/v1/ordersSubscribeSGS'
-                    - $ref: 'schemas/v1/ordersSchemas.yaml#/components/schemas/v1/ordersSubscribeSGSCounterParty'
+                    - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGS'
+                    - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGSCounterParty'
           responses:
             '200':
               description: Request processed successfully
