@@ -39,7 +39,7 @@ paths:
             schema:
               $ref: 'schemas/ordersSchemas.yaml#/components/schemas/enumerateOrdersQuery'
       responses:
-        '200':
+        '202':
           description: Request processed successfully
           content:
             application/json:
@@ -65,7 +65,7 @@ paths:
             schema:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
-        '200':
+        '202':
           description: Request processed successfully
           content:
             application/json:
@@ -96,7 +96,7 @@ paths:
             schema:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
-        '200':
+        '202':
           description: Request processed successfully
           content:
             application/json:
@@ -127,7 +127,7 @@ paths:
             schema:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
-        '200':
+        '202':
           description: Request processed successfully
           content:
             application/json:
@@ -184,7 +184,7 @@ paths:
               schema:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
-          '200':
+          '202':
             description: Request processed successfully
             content:
               application/json:
@@ -215,7 +215,7 @@ paths:
               schema:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
-          '200':
+          '202':
             description: Request processed successfully
             content:
               application/json:
@@ -246,7 +246,7 @@ paths:
               schema:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
-          '200':
+          '202':
             description: Request processed successfully
             content:
               application/json:
@@ -277,7 +277,7 @@ paths:
               schema:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
-          '200':
+          '202':
             description: Request processed successfully
             content:
               application/json:
@@ -305,7 +305,7 @@ paths:
                     - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGS'
                     - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGSCounterParty'
           responses:
-            '200':
+            '202':
               description: Request processed successfully
               content:
                 application/json:
@@ -331,7 +331,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -350,7 +350,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -369,7 +369,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -388,7 +388,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -407,7 +407,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -426,7 +426,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -445,7 +445,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -464,7 +464,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -483,7 +483,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -504,7 +504,7 @@ paths:
                     - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGS'
                     - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGSCounterParty'
           responses:
-            '200':
+            '202':
               description: Request processed successfully
               content:
                 application/json:

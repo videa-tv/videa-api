@@ -39,7 +39,7 @@ paths:
             schema:
               $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/enumerateMakegoodsQuery'
       responses:
-        '200':
+        '202':
           description: Request processed successfully
           content:
             application/json:
@@ -64,7 +64,7 @@ paths:
             schema:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
-        '200':
+        '202':
           description: Request processed successfully
           content:
             application/json:
@@ -94,7 +94,7 @@ paths:
             schema:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
-        '200':
+        '202':
           description: Request processed successfully
           content:
             application/json:
@@ -144,7 +144,7 @@ paths:
             schema:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
-        '200':
+        '202':
           description: Request processed successfully
           content:
             application/json:
@@ -174,7 +174,7 @@ paths:
             schema:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
-        '200':
+        '202':
           description: Request processed successfully
           content:
             application/json:
@@ -204,7 +204,7 @@ paths:
             schema:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
-        '200':
+        '202':
           description: Request processed successfully
           content:
             application/json:
@@ -234,7 +234,7 @@ paths:
             schema:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
-        '200':
+        '202':
           description: Request processed successfully
           content:
             application/json:
@@ -263,7 +263,7 @@ paths:
                     - $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/makegoodsSubscribeSGS'
                     - $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/makegoodsSubscribeSGSCounterParty'
           responses:
-            '200':
+            '202':
               description: Request processed successfully
               content:
                 application/json:
@@ -289,7 +289,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -308,7 +308,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -327,7 +327,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -346,7 +346,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -365,7 +365,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -384,7 +384,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -403,7 +403,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -422,7 +422,7 @@ paths:
                         schema:
                           $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
                   responses:
-                    '200':
+                    '202':
                       description: Request processed successfully
                       content:
                         application/json:
@@ -444,7 +444,7 @@ paths:
                     - $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/makegoodsSubscribeSGS'
                     - $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/makegoodsSubscribeSGSCounterParty'
           responses:
-            '200':
+            '202':
               description: Request processed successfully
               content:
                 application/json:
