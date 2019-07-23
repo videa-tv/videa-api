@@ -1,0 +1,458 @@
+openapi: "3.0.0"
+
+components:
+ securitySchemes:
+    bearerAuth: 
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
+security:
+  - bearerAuth: []
+
+info:
+  version: 4.0.9
+  title: Makegoods
+  description: |
+    * TODO
+  termsOfService: http://placeholderdomain.io/terms/
+  contact:
+    name: todo
+    email: mailing-list@tbd.com
+    url: http://placeholderdomain.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: http://placeholderdomain.io
+
+paths:
+  /v1/makegoods/enumerate:
+    post:
+      summary: Enumerate Makegoods
+      description: Request a collection of makegoods matching the provided query parameters
+      operationId: enumerateMakegoods
+      requestBody:
+        description: enumerateMakegoods
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/enumerateMakegoodsQuery'
+      responses:
+        '202':
+          description: Request processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/enumerateMakegoodsResponse'
+        default:
+          description: Unexpected error occured
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+
+  /v1/makegoods/create:
+    post:
+      summary: Create a makegood
+      description: Create a makegood
+      requestBody:
+        description: createMakegood
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+      responses:
+        '202':
+          description: Request processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+        default:
+          description: Unexpected error occured
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+
+  /v1/makegoods/cancel/{sgsMakegoodId}:
+    delete:
+      summary: Cancel a makegood
+      description: Cancel a makegood
+      parameters:
+        - name: sgsMakegoodId
+          in: path
+          description: The SGS makegood Id
+          required: true
+      requestBody:
+        description: cancelMakegood
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+      responses:
+        '202':
+          description: Request processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+        default:
+          description: Unexpected error occured
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+
+  /v1/makegoods/acknowledge:
+    post:
+      summary: Acknowledgement of makegood processing
+      description: Acknowledgement of makegood processing
+      requestBody:
+        description: cancelMakegood
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+      responses:
+        '200':
+          description: Request processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+        default:
+          description: Unexpected error occured
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+
+  /v1/makegoods/approve:
+    post:
+      summary: Receive events from SGS Counterparty for approved updates to a makegood
+      description: Receive events from SGS Counterparty for approved updates to a makegood
+      requestBody:
+        description: cancelMakegood
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+      responses:
+        '202':
+          description: Request processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+        default:
+          description: Unexpected error occured
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+
+  /v1/makegoods/confirm/{sgsMakegoodId}:
+    post:
+      summary: Receive events from SGS Counterparty for confirmation updates to a makegood
+      description: Receive events from SGS Counterparty for confirmation updates to a makegood
+      parameters:
+        - name: sgsMakegoodId
+          in: path
+          description: The SGS makegood Id
+          required: true
+      requestBody:
+        description: cancelMakegood
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+      responses:
+        '202':
+          description: Request processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+        default:
+          description: Unexpected error occured
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+
+  /v1/makegoods/notifyOpen/{sgsMakegoodId}:
+    post:
+      summary: Receive events from SGS Counterparty for open updates to a makegood
+      description: Receive events from SGS Counterparty for open updates to a makegood
+      parameters:
+        - name: sgsMakegoodId
+          in: path
+          description: The SGS makegood Id
+          required: true
+      requestBody:
+        description: cancelMakegood
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+      responses:
+        '202':
+          description: Request processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+        default:
+          description: Unexpected error occured
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+
+  /v1/makegoods/reject/{sgsMakegoodId}:
+    post:
+      summary: Receive events from SGS Counterparty for rejected updates to a makegood
+      description: Receive events from SGS Counterparty for rejected updates to a makegood
+      parameters:
+        - name: sgsMakegoodId
+          in: path
+          description: The SGS makegood Id
+          required: true
+      requestBody:
+        description: cancelMakegood
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+      responses:
+        '202':
+          description: Request processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+        default:
+          description: Unexpected error occured
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+
+          
+  /v1/makegoods/subscribe:
+      post:
+          summary: Subscribe to makegoods events
+          description: Subscribe to makegoods events
+          operationId: makegoodsSubscribe
+          requestBody:
+            description: makegoodsSubscribe
+            required: true
+            content:
+              application/json:
+                schema:
+                  oneOf:
+                    - $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/makegoodsSubscribeSGS'
+                    - $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/makegoodsSubscribeSGSCounterParty'
+          responses:
+            '202':
+              description: Request processed successfully
+              content:
+                application/json:
+                  schema:
+                    $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            default:
+              description: Unexpected error occured
+              content:
+                application/json:
+                  schema:
+                    $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+          callbacks:
+            acknowledgeMakegoodEvent:
+              '{$request.body#/acknowledgeReceiptNotificationUrl}':
+                post:
+                  summary: Acknowledgement that the makegood has been processed
+                  description: Acknowledgement that the makegood has been processed
+                  requestBody:
+                    description: acknowledgeReceiptNotificationUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request processed successfully
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            cancelMakegoodEvent:
+              '{$request.body#/approveCancelMakegoodResponseUrl}':
+                post:
+                  summary: Event from SGS that the order has been cancelled 
+                  description: Event from SGS that the order has been cancelled
+                  requestBody:
+                    description: approveCancelMakegoodResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request processed successfully
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            createMakegoodEvent:
+              '{$request.body#/approveCreateMakegoodResponseUrl}':
+                post:
+                  summary: Event from SGS that the order has been created
+                  description: Event from SGS that the order has been created
+                  requestBody:
+                    description: approveCreateMakegoodResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request processed successfully
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            makegoodConfirmationEvent:
+              '{$request.body#/confirmConfirmMakegoodNotificationUrl}':
+                post:
+                  summary: Event from SGS that the makegood has been confirmed
+                  description: Event from SGS that the makegood has been confirmed
+                  requestBody:
+                    description: confirmConfirmMakegoodNotificationUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request processed successfully
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            openMakegoodEvent:
+              '{$request.body#/confirmConfirmOrderNotificationUrl}':
+                post:
+                  summary: Event from SGS that the makegood has been opened
+                  description: Event from SGS that the makegood has been opened
+                  requestBody:
+                    description: approveReviseOrderResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request processed successfully
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            notifyOpenMakegoodEvent:
+              '{$request.body#/notifyOpenMakegoodNotificationUrl}':
+                post:
+                  summary: Event from SGS that the makegood has been opened
+                  description: Event from SGS that the makegood has been opened
+                  requestBody:
+                    description: approveReviseOrderResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request processed successfully
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            rejectCancelMakegoodEvent:
+              '{$request.body#/rejectCreateMakegoodResponseUrl}':
+                post:
+                  summary: Event from SGS that the cancel order request was rejected
+                  description: Event from SGS that the cancel order request was rejected
+                  requestBody:
+                    description: rejectCancelOrderResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request processed successfully
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            rejectCreateMakegoodEvent:
+              '{$request.body#/rejectCancelMakegoodResponseUrl}':
+                post:
+                  summary: Event from SGS that the create order request was rejected
+                  description: Event from SGS that the create order request was rejected
+                  requestBody:
+                    description: rejectCreateOrderResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request processed successfully
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+
+  /v1/makegoods/unsubscribe:
+        delete:
+          summary: Unsubscribe to makegood events
+          description: Unsubscribe to makegood events
+          operationId: makegoodUnsubscribe
+          requestBody:
+            description: makegoodUnsubscribe
+            required: true
+            content:
+              application/json:
+                schema:
+                  oneOf:
+                    - $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/makegoodsSubscribeSGS'
+                    - $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/makegoodsSubscribeSGSCounterParty'
+          responses:
+            '202':
+              description: Request processed successfully
+              content:
+                application/json:
+                  schema:
+                    $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            default:
+              description: Unexpected error occured
+              content:
+                application/json:
+                  schema:
+                    $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
