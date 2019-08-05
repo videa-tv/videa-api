@@ -88,6 +88,13 @@ components:
           type: string
           format: date-time
 
+    subscriptionsModel:
+      properties:
+        subscriptionRequest:
+          $ref: '#/components/schemas/subscriptionRequest'
+        subscriptionResponse:
+          $ref: '#/components/schemas/subscriptionResponse'
+
     enumerateSubscriptions:
       description: A client creates a subscription by issuing a request against the subscriptions resource. The subscription namespace is client-defined via the POST operation.
       required:
@@ -96,10 +103,7 @@ components:
         activeSubscriptions:
           type: array
           items:
-            subscriptionRequest:
-              $ref: '#/components/schemas/subscriptionRequest'
-            subscriptionResponse:
-              $ref: '#/components/schemas/subscriptionResponse'
+            $ref: '#/components/schemas/subscriptionsModel'
 
     transactionHeader:
       description: Transaction header details
