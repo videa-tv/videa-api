@@ -278,6 +278,11 @@ paths:
         summary: Remove a subscription
         description: Existing subscriptions can be deleted by making a DELETE request against the subscription resource
         operationId: Remove a subscription
+        parameters:
+        - name: id
+          in: path
+          description: The subscription id
+          required: true
         responses:
           '204':
             description: Subscription deleted
@@ -292,6 +297,11 @@ paths:
         summary: Enumerating subscriptions
         description: Get a list of active subscriptions
         operationId: Enumerating subscriptions
+        parameters:
+        - name: id
+          in: path
+          description: The subscription id
+          required: true
         responses:
           '202':
             description: Request processed successfully
