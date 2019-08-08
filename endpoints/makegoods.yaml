@@ -303,7 +303,7 @@ paths:
           description: The subscription id
           required: true
         responses:
-          '202':
+          '200':
             description: Request processed successfully
             content:
               application/json:
