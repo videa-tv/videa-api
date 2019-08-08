@@ -272,6 +272,23 @@ paths:
                 application/json:
                   schema:
                     $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+      get:
+        summary: Enumerating subscriptions
+        description: Get a list of active subscriptions
+        operationId: Enumerating subscriptions
+        responses:
+          '200':
+            description: Request processed successfully
+            content:
+              application/json:
+                schema:
+                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/enumerateSubscriptions'
+          default:
+            description: Unexpected error occured
+            content:
+              application/json:
+                schema:
+                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
           
   /v1/makegoods/subscriptions/{id}:
       delete:
@@ -286,29 +303,6 @@ paths:
         responses:
           '204':
             description: Subscription deleted
-          default:
-            description: Unexpected error occured
-            content:
-              application/json:
-                schema:
-                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
-      
-      get:
-        summary: Enumerating subscriptions
-        description: Get a list of active subscriptions
-        operationId: Enumerating subscriptions
-        parameters:
-        - name: id
-          in: path
-          description: The subscription id
-          required: true
-        responses:
-          '200':
-            description: Request processed successfully
-            content:
-              application/json:
-                schema:
-                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/enumerateSubscriptions'
           default:
             description: Unexpected error occured
             content:
