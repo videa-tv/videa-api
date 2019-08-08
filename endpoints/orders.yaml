@@ -290,229 +290,65 @@ paths:
                 schema:
                   $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
           
-  /v1/orders/subscribe:
+  /v1/orders/subscriptions:
       post:
-          summary: Subscribe to order events
-          description: Subscribe to order events
-          operationId: ordersSubscribe
+          summary: Create a new subscription
+          description: Create a new subscription
+          operationId: ordersSubscription
           requestBody:
-            description: ordersSubscribe
+            description: Create a new subscription
             required: true
             content:
               application/json:
                 schema:
-                  oneOf:
-                    - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGS'
-                    - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGSCounterParty'
+                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/subscriptionRequest'
           responses:
-            '202':
+            '201':
               description: Request processed successfully
               content:
                 application/json:
                   schema:
-                    $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+                    $ref: 'schemas/commonSchemas.yaml#/components/schemas/subscriptionResponse'
             default:
               description: Unexpected error occured
               content:
                 application/json:
                   schema:
                     $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
-          callbacks:
-            acknowledgeOrderEvent:
-              '{$request.body#/acknowledgeReceiptNotificationUrl}':
-                post:
-                  summary: Acknowledgement from either SGS or SGSCounterParty that the order has been processed
-                  description: Acknowledgement from either SGS or SGSCounterParty that the order has been processed
-                  requestBody:
-                    description: acknowledgeReceiptNotificationUrl callback
-                    required: true
-                    content:
-                      application/json:
-                        schema:
-                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
-                  responses:
-                    '202':
-                      description: Request processed successfully
-                      content:
-                        application/json:
-                          schema:
-                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
-            cancelOrderEvent:
-              '{$request.body#/approveCancelOrderResponseUrl}':
-                post:
-                  summary: Event from SGS that the order has been cancelled 
-                  description: Event from SGS that the order has been cancelled
-                  requestBody:
-                    description: approveCancelOrderResponseUrl callback
-                    required: true
-                    content:
-                      application/json:
-                        schema:
-                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
-                  responses:
-                    '202':
-                      description: Request processed successfully
-                      content:
-                        application/json:
-                          schema:
-                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
-            createOrderEvent:
-              '{$request.body#/approveCreateOrderResponseUrl}':
-                post:
-                  summary: Event from SGS that the order has been created
-                  description: Event from SGS that the order has been created
-                  requestBody:
-                    description: approveCreateOrderResponseUrl callback
-                    required: true
-                    content:
-                      application/json:
-                        schema:
-                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
-                  responses:
-                    '202':
-                      description: Request processed successfully
-                      content:
-                        application/json:
-                          schema:
-                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
-            reviseOrderEvent:
-              '{$request.body#/approveReviseOrderResponseUrl}':
-                post:
-                  summary: Event from SGS that the order has been revised
-                  description: Event from SGS that the order has been revised
-                  requestBody:
-                    description: approveReviseOrderResponseUrl callback
-                    required: true
-                    content:
-                      application/json:
-                        schema:
-                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
-                  responses:
-                    '202':
-                      description: Request processed successfully
-                      content:
-                        application/json:
-                          schema:
-                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
-            orderConfirmationEvent:
-              '{$request.body#/confirmConfirmOrderNotificationUrl}':
-                post:
-                  summary: Event from SGS that the order has been confirmed
-                  description: Event from SGS that the order has been confirmed
-                  requestBody:
-                    description: approveReviseOrderResponseUrl callback
-                    required: true
-                    content:
-                      application/json:
-                        schema:
-                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
-                  responses:
-                    '202':
-                      description: Request processed successfully
-                      content:
-                        application/json:
-                          schema:
-                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
-            openOrderEvent:
-              '{$request.body#/confirmConfirmOrderNotificationUrl}':
-                post:
-                  summary: Event from SGS that the order has been opened
-                  description: Event from SGS that the order has been opened
-                  requestBody:
-                    description: approveReviseOrderResponseUrl callback
-                    required: true
-                    content:
-                      application/json:
-                        schema:
-                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
-                  responses:
-                    '202':
-                      description: Request processed successfully
-                      content:
-                        application/json:
-                          schema:
-                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
-            rejectCancelOrderEvent:
-              '{$request.body#/rejectCancelOrderResponseUrl}':
-                post:
-                  summary: Event from SGS that the cancel order request was rejected
-                  description: Event from SGS that the cancel order request was rejected
-                  requestBody:
-                    description: rejectCancelOrderResponseUrl callback
-                    required: true
-                    content:
-                      application/json:
-                        schema:
-                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
-                  responses:
-                    '202':
-                      description: Request processed successfully
-                      content:
-                        application/json:
-                          schema:
-                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
-            rejectCreateOrderEvent:
-              '{$request.body#/rejectCreateOrderResponseUrl}':
-                post:
-                  summary: Event from SGS that the create order request was rejected
-                  description: Event from SGS that the create order request was rejected
-                  requestBody:
-                    description: rejectCreateOrderResponseUrl callback
-                    required: true
-                    content:
-                      application/json:
-                        schema:
-                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
-                  responses:
-                    '202':
-                      description: Request processed successfully
-                      content:
-                        application/json:
-                          schema:
-                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
-            rejectReviseOrderEvent:
-              '{$request.body#/rejectReviseOrderResponseUrl}':
-                post:
-                  summary: Event from SGS that the revise order request was rejected
-                  description: Event from SGS that the revise order request was rejected
-                  requestBody:
-                    description: rejectReviseOrderResponseUrl callback
-                    required: true
-                    content:
-                      application/json:
-                        schema:
-                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
-                  responses:
-                    '202':
-                      description: Request processed successfully
-                      content:
-                        application/json:
-                          schema:
-                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
-  /v1/orders/unsubscribe:
-        delete:
-          summary: Unsubscribe to order events
-          description: Unsubscribe to order events
-          operationId: ordersUnsubscribe
-          requestBody:
-            description: ordersUnsubscribe
-            required: true
+      get:
+        summary: Enumerating subscriptions
+        description: Get a list of active subscriptions
+        operationId: Enumerating subscriptions
+        responses:
+          '200':
+            description: Request processed successfully
             content:
               application/json:
                 schema:
-                  oneOf:
-                    - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGS'
-                    - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGSCounterParty'
-          responses:
-            '202':
-              description: Request processed successfully
-              content:
-                application/json:
-                  schema:
-                    $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
-            default:
-              description: Unexpected error occured
-              content:
-                application/json:
-                  schema:
-                    $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/enumerateSubscriptions'
+          default:
+            description: Unexpected error occured
+            content:
+              application/json:
+                schema:
+                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+
+  /v1/orders/subscriptions/{id}:
+      delete:
+        summary: Remove a subscription
+        description: Existing subscriptions can be deleted by making a DELETE request against the subscription resource
+        operationId: Remove a subscription
+        parameters:
+        - name: id
+          in: path
+          description: The subscription id
+          required: true
+        responses:
+          '204':
+            description: Subscription deleted
+          default:
+            description: Unexpected error occured
+            content:
+              application/json:
+                schema:
+                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
