@@ -260,7 +260,7 @@ paths:
                 schema:
                   $ref: 'schemas/commonSchemas.yaml#/components/schemas/subscriptionRequest'
           responses:
-            '202':
+            '201':
               description: Request processed successfully
               content:
                 application/json:
