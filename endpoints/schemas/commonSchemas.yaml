@@ -558,14 +558,17 @@ components:
 
     Error:
       required:
-        - errorCode
-        - errorMessage
+        - code
+        - message
       properties:
-        errorCode:
-          type: integer
-          format: int32
-        errorMessage:
+        code:
           type: string
+        message:
+          type: string
+        target:
+          type: string
+        details:
+          type: object
 
     acceptedResponse:
       required:
