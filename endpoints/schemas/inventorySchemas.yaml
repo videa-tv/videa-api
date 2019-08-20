@@ -15,7 +15,8 @@ components:
         transactionNumber:
           type: string
         timeStamp:
-          type: date-time
+          type: string
+          format: date-time
 
     inventoryUploadRequest:
       type: object
