@@ -151,6 +151,8 @@ components:
                           endDate:
                             type: string
                             format: date
+                          rationale:
+                            type: string
                           audiences:
                             type: array
                             items:
