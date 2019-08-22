@@ -138,8 +138,6 @@ components:
                       type: string
                     audienceSegment:
                       type: string
-                    rationale:
-                      type: string
                     surveys:
                       type: array
                       items:
@@ -153,6 +151,8 @@ components:
                           endDate:
                             type: string
                             format: date
+                          rationale:
+                            type: string
                           audiences:
                             type: array
                             items:
