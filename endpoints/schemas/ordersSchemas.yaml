@@ -22,7 +22,7 @@ components:
     enumerateOrdersResponse:
       required:
         - ordersCollection
-      description: Collection of orders to return 
+      description: This schema contains a collection of orders that return results from the encodededPayloadWrapper component.
       properties:
         ordersCollection:
           type: array
@@ -30,7 +30,7 @@ components:
             $ref: 'commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
 
     enumerateOrdersQuery:
-      description: Query parameters for requesting a collection of orders
+      description: This schema contains query parameters that are required to request a collection of orders. The request is satisfied by the CommonPayloadHeader component.
       required:
         - CommonPayloadHeader
         - startDate
@@ -40,14 +40,80 @@ components:
         CommonPayloadHeader:
           $ref: 'commonSchemas.yaml#/components/schemas/commonPayloadHeader'
         startDate:
-          description: Start date of the range
+          description: Range start date.
           type: string
           format: date-time
         endDate:
-          description: End date of the range
+          description: Range end date.
           type: string
           format: date-time
         limitCount: 
-          description: Max number of items to return
+          description: This is the maximum number of items that are returned after running the query.
           type: integer #TODO any constraints on this?
           format: int32
+
+    ordersSubscribeSGS:
+      description: This schema provides callback URLs to the SGS to subscribe to events. The request is satisfied by the CommonPayloadHeader component.
+      required:
+        - CommonPayloadHeader
+        - acknowledgeReceiptNotificationUrl
+        - approveCancelOrderResponseUrl
+        - approveCreateOrderResponseUrl
+        - approveReviseOrderResponseUrl
+        - confirmConfirmOrderNotificationUrl
+        - notifyOpenOpenOrderNotificationUrl
+        - rejectCancelOrderResponseUrl
+        - rejectCreateOrderResponseUrl
+        - rejectReviseOrderResponseUrl
+      properties:
+        CommonPayloadHeader:
+          $ref: 'commonSchemas.yaml#/components/schemas/commonPayloadHeader'
+        acknowledgeReceiptNotificationUrl:
+          description: acknowledgeReceiptNotificationUrl
+          type: string
+          format: uri
+        approveCancelOrderResponseUrl:
+          description: approveCancelOrderResponseUrl
+          type: string
+          format: uri
+        approveCreateOrderResponseUrl:
+          description: approveCreateOrderResponseUrl
+          type: string
+          format: uri
+        approveReviseOrderResponseUrl:
+          description: approveReviseOrderResponseUrl
+          type: string
+          format: uri
+        confirmConfirmOrderNotificationUrl:
+          description: confirmConfirmOrderNotificationUrl
+          type: string
+          format: uri
+        notifyOpenOpenOrderNotificationUrl:
+          description: notifyOpenOpenOrderNotificationUrl
+          type: string
+          format: uri
+        rejectCancelOrderResponseUrl:
+          description: rejectCancelOrderResponseUrl
+          type: string
+          format: uri
+        rejectCreateOrderResponseUrl:
+          description: rejectCreateOrderResponseUrl
+          type: string
+          format: uri
+        rejectReviseOrderResponseUrl:
+          description: rejectReviseOrderResponseUrl
+          type: string
+          format: uri
+
+    ordersSubscribeSGSCounterParty:
+        description: This schema provides callback URLs to subscribe to events from the SGS CounterParty component. The request is satisfied by the CommonPayloadHeader component.
+        required:
+          - CommonPayloadHeader
+          - acknowledgeReceiptNotificationUrl
+        properties:
+          CommonPayloadHeader:
+            $ref: 'commonSchemas.yaml#/components/schemas/commonPayloadHeader'
+          acknowledgeReceiptNotificationUrl:
+            description: acknowledgeReceiptNotificationUrl
+            type: string
+            format: uri

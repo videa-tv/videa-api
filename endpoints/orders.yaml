@@ -29,7 +29,7 @@ paths:
   /v1/orders/enumerate:
     post:
       summary: Enumerate Orders
-      description: Request a collection of orders matching the provided query parameters
+      description: Use this request to get a collection of orders matching the query parameters. The following objects, strings, and integers are required - (1) __CommonPayloadHeader__ - this is an _object_ that defines the common properties to include with all payloads, (2) __startDate__ - this is a _string_ that defines the start date of the range, (3) __endDate__ - this is a _string_ that defines the end date of the range, and (4) __limitCount__ - this is an _integer_ that defines the maximum number of items to return.
       operationId: enumerateOrders
       requestBody:
         description: EnumerateOrders
@@ -40,13 +40,13 @@ paths:
               $ref: 'schemas/ordersSchemas.yaml#/components/schemas/enumerateOrdersQuery'
       responses:
         '202':
-          description: Request processed successfully
+          description: Request successful.
           content:
             application/json:
               schema:
                 $ref: 'schemas/ordersSchemas.yaml#/components/schemas/enumerateOrdersResponse'
         default:
-          description: Unexpected error occured
+          description: Error.
           content:
             application/json:
               schema:
@@ -55,7 +55,7 @@ paths:
   /v1/orders/create:
     post:
       summary: Create an Order
-      description: Create an Order
+      description: Use this request to create an order. The following object and strings are required - (1) __CommonPayloadHeader__ - this is an _object_ that defines the common properties to include with all payloads, (2) __payloadData__ - this is a _string_ that defines the encoded payload data, (3) __payloadType__ - this is a _string_ that defines the format of the payload data, and (4) __payloadEncoding__ - this is a _string_ that defines the encoding method used on the payload data.
       operationId: createOrder
       requestBody:
         description: createOrder
@@ -66,13 +66,13 @@ paths:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
         '202':
-          description: Request processed successfully
+          description: Request successful.
           content:
             application/json:
               schema:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
         default:
-          description: Unexpected error occured
+          description: Error.
           content:
             application/json:
               schema:
@@ -81,12 +81,12 @@ paths:
   /v1/orders/cancel/{sgsOrderId}:
     put:
       summary: Cancel an Order
-      description: Cancel an Order
+      description: Use this request to cancel an order. The __sgsOrderId__ path parameter, which is the SGS order identifier, is required. The following object and strings are required - (1) __CommonPayloadHeader__ - this is an _object_ that defines the common properties to include with all payloads, (2) __payloadData__ - this is a _string_ that defines the encoded payload data, (3) __payloadType__ - this is a _string_ that defines the format of the payload data, and (4) __payloadEncoding__ - this is a _string_ that defines the encoding method used on the payload data.
       operationId: cancelOrder
       parameters:
         - name: sgsOrderId
           in: path
-          description: The SGS Order Id
+          description: The SGS order identifier.
           required: true
       requestBody:
         description: cancelOrder
@@ -97,13 +97,13 @@ paths:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
         '202':
-          description: Request processed successfully
+          description: Request successful.
           content:
             application/json:
               schema:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
         default:
-          description: Unexpected error occured
+          description: Error.
           content:
             application/json:
               schema:
@@ -112,12 +112,12 @@ paths:
   /v1/orders/revise/{sgsOrderId}:
     put:
       summary: Revise an Order
-      description: Revise an order
+      description: Use this request to revise an order. The __sgsOrderId__ path parameter, which is the SGS order identifier, is required. The following object and strings are required - (1) __CommonPayloadHeader__ - this is an _object_ that defines the common properties to include with all payloads, (2) __payloadData__ - this is a _string_ that defines the encoded payload data, (3) __payloadType__ - this is a _string_ that defines the format of the payload data, and (4) __payloadEncoding__ - this is a _string_ that defines the encoding method used on the payload data.
       operationId: reviseOrder
       parameters:
         - name: sgsOrderId
           in: path
-          description: The SGS Order Id
+          description: The SGS order identifier.
           required: true
       requestBody:
         description: reviseOrder
@@ -128,13 +128,13 @@ paths:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
         '202':
-          description: Request processed successfully
+          description: Request successful.
           content:
             application/json:
               schema:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
         default:
-          description: Unexpected error occured
+          description: Error.
           content:
             application/json:
               schema:
@@ -142,8 +142,8 @@ paths:
 
   /v1/orders/acknowledge:
       post:
-        summary: Acknowledgement of order processing
-        description: Acknowledgement of order processing
+        summary: Acknowledgement of Order Processing
+        description: Use this request to acknowledge order processing. The following object and strings are required - (1) __CommonPayloadHeader__ - this is an _object_ that defines the common properties to include with all payloads, (2) __payloadData__ - this is a _string_ that defines the encoded payload data, (3) __payloadType__ - this is a _string_ that defines the format of the payload data, and (4) __payloadEncoding__ - this is a _string_ that defines the encoding method used on the payload data.
         operationId: acknowledgeOrder
         requestBody:
           description: acknowledge 
@@ -154,13 +154,13 @@ paths:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
           '200':
-            description: Request processed successfully
+            description: Request successful.
             content:
               application/json:
                 schema:
                   $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
           default:
-            description: Unexpected error occured
+            description: Error.
             content:
               application/json:
                 schema:
@@ -168,13 +168,13 @@ paths:
 
   /v1/orders/approve/{sgsOrderId}:
       post:
-        summary: Receive events from SGS for accepted updates to an order
-        description: Receive events for from SGS for accepted updates to an order
+        summary: Receive Events from SGS for Accepted Updates to an Order
+        description: Use this request to receive events from SGS for accepted updates to an order. The __sgsOrderId__ path parameter, which is the SGS order identifier, is required. The following object and strings are required - (1) __CommonPayloadHeader__ - this is an _object_ that defines the common properties to include with all payloads, (2) __payloadData__ - this is a _string_ that defines the encoded payload data, (3) __payloadType__ - this is a _string_ that defines the format of the payload data, and (4) __payloadEncoding__ - this is a _string_ that defines the encoding method used on the payload data.
         operationId: approveOrder
         parameters:
           - name: sgsOrderId
             in: path
-            description: The SGS Order Id
+            description: The SGS order identifier.
             required: true
         requestBody:
           description: reviseOrder
@@ -185,13 +185,13 @@ paths:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
           '202':
-            description: Request processed successfully
+            description: Request successful.
             content:
               application/json:
                 schema:
                   $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
           default:
-            description: Unexpected error occured
+            description: Error.
             content:
               application/json:
                 schema:
@@ -200,12 +200,12 @@ paths:
   /v1/orders/confirm/{sgsOrderId}:
       post:
         summary: Confirm an Order
-        description: Confirm an Order
+        description: Use this request to confirm an order. The __sgsOrderId__ path parameter, which is the SGS order identifier, is required. The following object and strings are required - (1) __CommonPayloadHeader__ - this is an _object_ that defines the common properties to include with all payloads, (2) __payloadData__ - this is a _string_ that defines the encoded payload data, (3) __payloadType__ - this is a _string_ that defines the format of the payload data, and (4) __payloadEncoding__ - this is a _string_ that defines the encoding method used on the payload data.
         operationId: confirmOrder
         parameters:
           - name: sgsOrderId
             in: path
-            description: The SGS Order Id
+            description: The SGS order identifier.
             required: true
         requestBody:
           description: reviseOrder
@@ -216,13 +216,13 @@ paths:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
           '202':
-            description: Request processed successfully
+            description: Request successful.
             content:
               application/json:
                 schema:
                   $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
           default:
-            description: Unexpected error occured
+            description: Error.
             content:
               application/json:
                 schema:
@@ -231,12 +231,12 @@ paths:
   /v1/orders/notifyOpen/{sgsOrderId}:
       post:
         summary: Notify on Open Order
-        description: Notify on Open Order
+        description: Use this request to notify an open order. The __sgsOrderId__ path parameter, which is the SGS order identifier, is required. The following object and strings are required - (1) __CommonPayloadHeader__ - this is an _object_ that defines the common properties to include with all payloads, (2) __payloadData__ - this is a _string_ that defines the encoded payload data, (3) __payloadType__ - this is a _string_ that defines the format of the payload data, and (4) __payloadEncoding__ - this is a _string_ that defines the encoding method used on the payload data.
         operationId: notifyOpenOrder
         parameters:
           - name: sgsOrderId
             in: path
-            description: The SGS Order Id
+            description: The SGS order identifier.
             required: true
         requestBody:
           description: reviseOrder
@@ -247,13 +247,13 @@ paths:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
           '202':
-            description: Request processed successfully
+            description: Request successful.
             content:
               application/json:
                 schema:
                   $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
           default:
-            description: Unexpected error occured
+            description: Error.
             content:
               application/json:
                 schema:
@@ -261,13 +261,13 @@ paths:
 
   /v1/orders/reject/{sgsOrderId}:
       post:
-        summary: Receive events from SGS for rejected updates to an order
-        description: Receive events from SGS for rejected updates to an order
+        summary: Receive Events from SGS for Rejected Updates to an Order
+        description: Use this request to receive events from SGS for rejected updates to an order. The __sgsOrderId__ path parameter, which is the SGS order identifier, is required. The following object and strings are required - (1) __CommonPayloadHeader__ - this is an _object_ that defines the common properties to include with all payloads, (2) __payloadData__ - this is a _string_ that defines the encoded payload data, (3) __payloadType__ - this is a _string_ that defines the format of the payload data, and (4) __payloadEncoding__ - this is a _string_ that defines the encoding method used on the payload data.
         operationId: rejectOrder
         parameters:
           - name: sgsOrderId
             in: path
-            description: The SGS Order Id
+            description: The SGS order identifier.
             required: true
         requestBody:
           description: reviseOrder
@@ -278,77 +278,241 @@ paths:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
           '202':
-            description: Request processed successfully
+            description: Request successful.
             content:
               application/json:
                 schema:
                   $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
           default:
-            description: Unexpected error occured
+            description: Error.
             content:
               application/json:
                 schema:
                   $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
           
-  /v1/orders/subscriptions:
+  /v1/orders/subscribe:
       post:
-          summary: Create a new subscription
-          description: Create a new subscription
-          operationId: ordersSubscription
+          summary: Subscribe to Order Events
+          description: Use this request to subscribe to the order events. The following object and URL strings are required - (1) __CommonPayloadHeader__ - this is an _object_ that defines the common properties to include with all payloads, (2) __acknowledgeReceiptNotificationUrl__, (3) __approveCancelOrderResponseUrl__, (4) __approveCreateOrderResponseUrl__, (5) __approveReviseOrderResponseUrl__, (6) __confirmConfirmOrderNotificationUrl__, (7) __notifyOpenOpenOrderNotificationUrl__, (8) __rejectCancelOrderResponseUrl__, (9) __rejectCreateOrderResponseUrl__, (10) __rejectCreateOrderResponseUrl__, and (11) __rejectReviseOrderResponseUrl__.
+          operationId: ordersSubscribe
           requestBody:
-            description: Create a new subscription
+            description: ordersSubscribe
             required: true
             content:
               application/json:
                 schema:
-                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/subscriptionRequest'
+                  oneOf:
+                    - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGS'
+                    - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGSCounterParty'
           responses:
-            '201':
-              description: Request processed successfully
+            '202':
+              description: Request successful.
               content:
                 application/json:
                   schema:
-                    $ref: 'schemas/commonSchemas.yaml#/components/schemas/subscriptionResponse'
+                    $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
             default:
-              description: Unexpected error occured
+              description: Error.
               content:
                 application/json:
                   schema:
                     $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
-      get:
-        summary: Enumerating subscriptions
-        description: Get a list of active subscriptions
-        operationId: Enumerating subscriptions
-        responses:
-          '200':
-            description: Request processed successfully
+          callbacks:
+            acknowledgeOrderEvent:
+              '{$request.body#/acknowledgeReceiptNotificationUrl}':
+                post:
+                  summary: Acknowledgement from either SGS or SGSCounterParty that the order has been processed
+                  description: Acknowledgement from either SGS or SGSCounterParty that the order was processed.
+                  requestBody:
+                    description: acknowledgeReceiptNotificationUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request successful.
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            cancelOrderEvent:
+              '{$request.body#/approveCancelOrderResponseUrl}':
+                post:
+                  summary: Event from SGS that the order has been cancelled 
+                  description: Event from SGS that the order was cancelled.
+                  requestBody:
+                    description: approveCancelOrderResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request successful.
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            createOrderEvent:
+              '{$request.body#/approveCreateOrderResponseUrl}':
+                post:
+                  summary: Event from SGS that the order has been created
+                  description: Event from SGS that the order was created.
+                  requestBody:
+                    description: approveCreateOrderResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request successful.
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            reviseOrderEvent:
+              '{$request.body#/approveReviseOrderResponseUrl}':
+                post:
+                  summary: Event from SGS that the order has been revised
+                  description: Event from SGS that the order was revised.
+                  requestBody:
+                    description: approveReviseOrderResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request successful.
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            orderConfirmationEvent:
+              '{$request.body#/confirmConfirmOrderNotificationUrl}':
+                post:
+                  summary: Event from SGS that the order has been confirmed
+                  description: Event from SGS that the order was confirmed.
+                  requestBody:
+                    description: approveReviseOrderResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request successful.
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            openOrderEvent:
+              '{$request.body#/confirmConfirmOrderNotificationUrl}':
+                post:
+                  summary: Event from SGS that the order has been opened
+                  description: Event from SGS that the order was opened.
+                  requestBody:
+                    description: approveReviseOrderResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request successful.
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            rejectCancelOrderEvent:
+              '{$request.body#/rejectCancelOrderResponseUrl}':
+                post:
+                  summary: Event from SGS that the cancel order request was rejected
+                  description: Event from SGS that the cancel-order request was rejected.
+                  requestBody:
+                    description: rejectCancelOrderResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request successful.
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            rejectCreateOrderEvent:
+              '{$request.body#/rejectCreateOrderResponseUrl}':
+                post:
+                  summary: Event from SGS that the create order request was rejected
+                  description: Event from SGS that the create-order request was rejected.
+                  requestBody:
+                    description: rejectCreateOrderResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request successful.
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            rejectReviseOrderEvent:
+              '{$request.body#/rejectReviseOrderResponseUrl}':
+                post:
+                  summary: Event from SGS that the revise order request was rejected
+                  description: Event from SGS that the revise-order request was rejected.
+                  requestBody:
+                    description: rejectReviseOrderResponseUrl callback
+                    required: true
+                    content:
+                      application/json:
+                        schema:
+                          $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                  responses:
+                    '202':
+                      description: Request successful.
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+  /v1/orders/unsubscribe:
+        delete:
+          summary: Unsubscribe to Order Events
+          description: Use this request to unsubscribe from the order events. The following object and URL strings are required - (1) __CommonPayloadHeader__ - this is an _object_ that defines the common properties to include with all payloads,(2) __acknowledgeReceiptNotificationUrl__, (3) __approveCancelOrderResponseUrl__, (4) __approveCreateOrderResponseUrl__, (5) __approveReviseOrderResponseUrl__, (6) __confirmConfirmOrderNotificationUrl__, (7) __notifyOpenOpenOrderNotificationUrl__, (8) __rejectCancelOrderResponseUrl__, (9) __rejectCreateOrderResponseUrl__, (10) __rejectCreateOrderResponseUrl__, and (11) __rejectReviseOrderResponseUrl__.
+          operationId: ordersUnsubscribe
+          requestBody:
+            description: ordersUnsubscribe
+            required: true
             content:
               application/json:
                 schema:
-                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/enumerateSubscriptions'
-          default:
-            description: Unexpected error occured
-            content:
-              application/json:
-                schema:
-                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
-
-  /v1/orders/subscriptions/{id}:
-      delete:
-        summary: Remove a subscription
-        description: Existing subscriptions can be deleted by making a DELETE request against the subscription resource
-        operationId: Remove a subscription
-        parameters:
-        - name: id
-          in: path
-          description: The subscription id
-          required: true
-        responses:
-          '204':
-            description: Subscription deleted
-          default:
-            description: Unexpected error occured
-            content:
-              application/json:
-                schema:
-                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+                  oneOf:
+                    - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGS'
+                    - $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscribeSGSCounterParty'
+          responses:
+            '202':
+              description: Request successful.
+              content:
+                application/json:
+                  schema:
+                    $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+            default:
+              description: Error.
+              content:
+                application/json:
+                  schema:
+                    $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'

@@ -17,25 +17,25 @@ paths: {} # no paths
 components:
   schemas:
     commonPayloadHeader:
-      description: Common properties to be included with all payloads
+      description: The commonPayloadHeader schema contains the common properties that are included with all payloads. This schema acquires both (1) a buyer- or seller-generated unique value for the transaction and (2) the creation date and time.
       required:
         - tipVersion
         - transactionNum
         - timeStamp
       properties:
         tipVersion:
-          description: TIP version of the interface
+          description: Interface TIP version
           type: string  # TODO any constraints?
         transactionId:
-          description: Buyer or Seller generated unique value for transaction
+          description: The buyer- or seller-generated unique value for a transaction.
           type: string  # TODO any constraints?
         timeStamp: 
-          description: Date and time the transaction was created
+          description: This is the date and time when the transaction was created.
           type: string # TODO should this be expressed as an Epoch date instead (32 bit integer)?
           format: date-time
 
     encodededPayloadWrapper:
-      description: Used with non-JSON payload formats such as TVB 3.2 or DARE, provides information about the payload and it's encoding
+      description: Use the encodedPayloadWrapper schema with non-JSON payload formats, such as TVB 3.2 or DARE, to gather information about the payload and its encoding.
       required:
         - CommonPayloadHeader
         - payloadData
@@ -45,80 +45,19 @@ components:
         CommonPayloadHeader:
           $ref: '#/components/schemas/commonPayloadHeader'
         payloadData:
-          description: The encoded payload data
+          description: The encoded payload data.
           type: string
         payloadType:
           description: Format of the payload data
           type: string
           enum: [TVB3.2, DARE]
         payloadEncoding: 
-          description: Encoding method used on the payload data
+          description: This is the encoding method for the payload data.
           type: string
           enum: [Base64]
 
-    subscriptionRequest:
-      description: A client creates a subscription by issuing a request against the subscriptions resource. The subscription namespace is client-defined via the POST operation.
-      required:
-        - resource
-        - notificationUrl
-      properties:
-        resource:
-          description: Resource path to watch
-          type: string
-          format: uri
-        notificationUrl:
-          description: The target web hook URL
-          type: string
-          format: uri
-        clientState:
-          description: Opaque string passed back to the client on all notifications. Callers may choose to use this to provide tagging mechanisms.
-          type: string
-
-    subscriptionResponse:
-      description: If the subscription was successfully created, the service MUST respond with the status code 201 CREATED and a body containing at least the following properties
-      required:
-        - id
-      properties:
-        id:
-          description: Unique ID of the new subscription that can be used later to update/delete the subscription.
-          type: string
-        expirationDateTime:
-          description: The expiration date of the subscription
-          type: string
-          format: date-time
-
-
-    enumerateSubscriptionsResponse:
-      description: To get a list of active subscriptions, clients issue a GET request against the subscriptions resource 
-      required:
-        - id
-        - resource
-        - notificationUrl
-      properties:
-        id:
-          description: Unique ID of the new subscription that can be used later to update/delete the subscription.
-          type: string
-        resource:
-          description: Resource path to watch
-          type: string
-          format: uri
-        notificationUrl:
-          description: The target web hook URL
-          type: string
-          format: uri
-
-    enumerateSubscriptions:
-      description: A client creates a subscription by issuing a request against the subscriptions resource. The subscription namespace is client-defined via the POST operation.
-      required:
-        - activeSubscriptions
-      properties:
-        activeSubscriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/enumerateSubscriptionsResponse'
-
     transactionHeader:
-      description: Transaction header details
+      description: The transactionHeader schema contains a buyer- or seller-generated unique number and a transaction type of New, Changed, or Cancelled. Additionally, this schema includes both (1) the unique identifier and the name of the trading partner, and (2) the date and time when the transaction was created.
       required:
         - version
         - transactionNum
@@ -128,29 +67,29 @@ components:
         - timeStamp
       properties:
         tipVersion:
-          description: TIP version of the interface
+          description: The TIP version of the interface.
           type: string  # TODO any constraints?
         transactionNum:
-          description: Buyer or Seller generated unique number for transaction
+          description: This is the buyer- or seller-generated unique number for a transaction.
           type: integer
           format: int64
         transactionType:
-          description: Indicates the type of transaction (New, Changed, Cancelled)
+          description: This indicates the transaction type (New, Changed, or Cancelled).
           type: string
           enum: [New, Changed, Cancelled]
         sourceID: 
-          description: String	Indicates the source "trading partner" unique identification  
+          description: This indicates the unique identifier for the source _trading partner_.
           type: string # TODO any constraints?
         sourceName:
-          description: Indicates the source "trading partner" name
+          description: This indicates the name for the source _trading partner_.
           type: string
         timeStamp: 
-          description: Date and time the transaction was created
+          description: This is the date and time when the transaction was created.
           type: string # TODO should this be expressed as an Epoch date instead (32 bit integer)?
           format: date-time
 
     mediaOutlet:
-      description: Packages a unique identifier and name into a single object # TODO generic description
+      description: The mediaOutlet schema packages a unique identifier and a name into a single object. The properties include (1) a persistent identifier for a station or network, (2) the station or network name, (3) a string that identifies the station or network, and (4) any reference information for the external buyer. # TODO generic description
       required:
         - mediaOutletId
         - mediaOutletName
@@ -171,7 +110,7 @@ components:
           $ref: '#/components/schemas/mediaOutlet'
 
     Advertiser:
-      description: Packages a unique identifier and name into a single object # TODO generic description
+      description: The Advertiser schema packages a unique identifier and a name into a single object. The properties include (1) a persistent identifier for the advertiser and/or client, (2) a string for the advertiser name, and (3) any reference information for the external advertiser for the buyer. # TODO generic description
       required:
         - advertiserId
         - advertiserName
@@ -188,7 +127,7 @@ components:
           $ref: '#/components/schemas/Advertiser'
 
     Brand:
-      description: Packages a unique identifier and name into a single object # TODO generic description
+      description: The Brand schema packages a unique identifier and a name into a single object. The properties include (1) a persitent brand identifier, (2) the brand name, and (3) information regarding external brand references. # TODO generic description
       required:
         - brandId
         - brandName
@@ -205,7 +144,7 @@ components:
           $ref: '#/components/schemas/Brand'
 
     buyerLocation:
-      description: Packages a unique identifier and name into a single object # TODO generic description
+      description: The buyerLocation schema packages a unique identifier and a name into a single object. The properties include (1) a persistent identifier for the buying organiztion, traffic agency and/or media supplier, (2) the name and location of the buyer, and (3) information regarding the external buyer location. # TODO generic description
       required:
         - buyerLocationId
         - buyerLocationName
@@ -222,7 +161,7 @@ components:
           $ref: '#/components/schemas/buyerLocation'
 
     Product:
-      description: Packages a unique identifier and name into a single object # TODO generic description
+      description: The Product schema packages a unique identifier and a name into a single object. The properties include (1) a persistent product identifier and (2) a buyer external product reference. # TODO generic description
       required:
         - productId
         - productName
@@ -239,7 +178,7 @@ components:
           $ref: '#/components/schemas/Product'
 
     audienceSegment:
-      description: Packages a unique identifier and name into a single object # TODO generic description
+      description: The audienceSegment schema packages a unique identifier and a name into a single object. The properties include (1) a persistent audience-segment identifier, (2) an audience-segment name, (3) a buyer external audience segment reference, (4) a unique audience-segment identifier, (5) an audience-segment name, (6) a viewership elements type, and (7) a universe type. # TODO generic description
       required:
         - audienceSegmentId
         - audienceSegmentName
@@ -284,7 +223,7 @@ components:
           type: boolean
 
     audienceMetric: # TODO schema and property have the same name
-      description: Packages audience segment metric attributes into single object
+      description: The audienceMetric schema packages audience segment metric attributes into single object. The properties include (1) a list of pricing metric segments and (2) an audience metric dollar value.
       properties:
         audienceSegmentId:
           description: List of pricing metric segments (AND) # TODO AND what? should there be additional data besides the array of enums specified here?
@@ -297,7 +236,7 @@ components:
           type: string  # TODO why is this a string value?
 
     cancellationTerms:
-      description: Packages cancellation options data attributes into a single object
+      description: The cancellationTerms schema packages cancellation options data attributes into a single object. The properties include (1) the quarter name, or broadcast date, dependent on the cancellation type and (2) the amount of time, in both number of days and percentages, to request a cancellation.
       required:
         - cancellationType
         - Cancellation
@@ -324,7 +263,7 @@ components:
           format: float
 
     referenceIds:
-      description: Packages the system ids across mulitple systems into a single object
+      description: The referenceIds schema packages the system IDs across mulitple systems into a single object. The properties include (1) the organization name, (2) reference-source lookup, (3) an ID type, (4) reference-type numbers or IDs, (5) a reference ID version, and (6) a free-form name.
       required:
         - referenceSourceName
         - referenceSourceId
@@ -354,7 +293,7 @@ components:
           type: string #TODO any constraints?
 
     cpeCode: 
-      description: Packages audience segment metric attributes into single object
+      description: The cpeCode schema packages audience segment metric attributes into single object. The properties include (1) both a client code and product code from the buyer and (2) an estimate code from the buyer.
       properties:
         clientCode:
           description: Client code provided from the buyer. Packages client, product and estimate codes together.
@@ -497,6 +436,7 @@ components:
           type: string
           format: date-time
         timeFrame:
+
           description: The valid start and end times
           $ref: '#/components/schemas/timeFrame'
         DOW:
@@ -558,17 +498,14 @@ components:
 
     Error:
       required:
-        - code
-        - message
+        - errorCode
+        - errorMessage
       properties:
-        code:
+        errorCode:
+          type: integer
+          format: int32
+        errorMessage:
           type: string
-        message:
-          type: string
-        target:
-          type: string
-        details:
-          type: object
 
     acceptedResponse:
       required:
