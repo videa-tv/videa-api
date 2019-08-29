@@ -17,6 +17,8 @@ components:
         timeStamp:
           type: string
           format: date-time
+        error:
+          $ref: 'commonSchemas.yaml#/components/schemas/Error'
 
     inventoryUploadRequest:
       type: object
