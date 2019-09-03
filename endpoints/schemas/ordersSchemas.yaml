@@ -22,7 +22,7 @@ components:
     enumerateOrdersResponse:
       required:
         - ordersCollection
-      description: Collection of orders to return 
+      description: Collection of orders to return to the UI
       properties:
         ordersCollection:
           type: array
