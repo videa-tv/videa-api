@@ -29,7 +29,7 @@ paths:
   /v1/orders/enumerate:
     post:
       summary: Enumerate Orders
-      description: Request a collection of orders matching the provided query parameters
+      description: Request a current collection of orders matching the provided query parameters
       operationId: enumerateOrders
       requestBody:
         description: EnumerateOrders
