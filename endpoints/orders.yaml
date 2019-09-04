@@ -12,8 +12,8 @@ security:
 info:
   version: 4.0.9
   title: Orders
-  description: |
-    * TODO
+  description:
+  * TODO
   termsOfService: http://placeholderdomain.io/terms/
   contact:
     name: todo
