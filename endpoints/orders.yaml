@@ -303,7 +303,7 @@ paths:
                   $ref: 'schemas/commonSchemas.yaml#/components/schemas/subscriptionRequest'
           responses:
             '201':
-              description: Your request was received and an asynchronous response payload will be delivered to the subscriptions counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
+              description: Callback URL set successfully.
               content:
                 application/json:
                   schema:
@@ -320,7 +320,7 @@ paths:
         operationId: Enumerating subscriptions
         responses:
           '200':
-            description: Your request was received and an asynchronous response payload will be delivered to the enumerating subscriptions counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
+            description: Response contains currently configured callback URLs.
             content:
               application/json:
                 schema:
