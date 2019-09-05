@@ -12,7 +12,7 @@ security:
 info:
   version: 4.0.9
   title: Orders
-  description: SGS uses the following _methods_ to expose the orders resource - __Create__, __Cancel__, __Revise__, __Acknowledge__, and __Confirmation__. APIs follow the convention established by the TVB 3.2 flow and most of these flows are asynchronous. SGS delivers asynchronous requests to the counterparty-exposed endpoint URLs; then, the counterparty uses the orders subscription AP to set the URLs. The payload is opaque to this specification as it is encapsulated within the payloadData property and encoded as XML per the TVB 3.2 standard.
+  description: SGS uses the following _methods_ on the orders resource - __Acknowledge__, __Approve__, __Cancel__, __Confirm__, __Create__, __Enumerate__, __notifyOpen__, __Reject__, and __Revise__. APIs follow the convention established by the TVB 3.2 flow and most of these flows are asynchronous. SGS delivers asynchronous requests to the counterparty*exposed endpoint URLs; then, the counterparty uses the orders subscription AP to set the URLs. The payload is opaque to this specification as it is encapsulated within the payloadData property and encoded as XML per the TVB 3.2 standard.
   termsOfService: http://placeholderdomain.io/terms/
   contact:
     name: todo
@@ -303,7 +303,7 @@ paths:
                   $ref: 'schemas/commonSchemas.yaml#/components/schemas/subscriptionRequest'
           responses:
             '201':
-              description: Successful.
+              description: Your request was received and an asynchronous response payload will be delivered to the subscriptions counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
               content:
                 application/json:
                   schema:
@@ -320,7 +320,7 @@ paths:
         operationId: Enumerating subscriptions
         responses:
           '200':
-            description: Successful.
+            description: Your request was received and an asynchronous response payload will be delivered to the enumerating subscriptions counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
             content:
               application/json:
                 schema:
