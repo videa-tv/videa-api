@@ -43,6 +43,9 @@ components:
             timeStamp:
               type: string
               format: nullable
+            checksum:
+              type: string
+              format: nullable
         mediaOutletSellingTitles:
           type: array
           items:
@@ -53,9 +56,6 @@ components:
               sellingTitleId:
                 type: string
                 format: nullable
-              id:
-                type: integer
-                format: int32
               mediaOutlet:
                 type: object
                 properties:
@@ -64,9 +64,6 @@ components:
                     format: int32
                   mediaOutletName:
                     type: string
-              surveyName:
-                type: string
-                format: nullable
               dayparts:
                 type: array
                 items:
@@ -145,6 +142,8 @@ components:
                       items:
                         type: object
                         properties:
+                          surveyName:
+                            type: string
                           audienceType:
                             type: string
                           startDate:
@@ -189,6 +188,12 @@ components:
                           type: string
                         rateCardName:
                           type: string
+                        rateCardStartDate:
+                          type: string
+                          format: date
+                        rateCardEndDate:
+                          type: string
+                          format: date
                         baseLength:
                           type: string
                         isDefault:
