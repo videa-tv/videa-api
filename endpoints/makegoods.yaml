@@ -276,7 +276,8 @@ paths:
             CreateMakegoodRequest:
               '{$request.body#/resource}':
                 post:
-                    requestBody:   # Contents of the CreateMakegoodRequest callback message
+                    requestBody:
+                      description: Contents of the CreateMakegoodRequest callback message
                       required: true
                       content:
                         application/json:
@@ -293,7 +294,8 @@ paths:
             ConfirmMakegoodNotification:
               '{$request.body#/resource}':
                 post:
-                    requestBody:   # Contents of the ConfirmMakegoodNotification callback message
+                    requestBody:
+                      description: Contents of the ConfirmMakegoodNotification callback message
                       required: true
                       content:
                         application/json:
@@ -310,13 +312,14 @@ paths:
             CancelMakegoodRequest:
               '{$request.body#/resource}':
                 post:
-                    requestBody:   # Contents of the CancelMakegoodRequest callback message
+                    requestBody:
+                      description: Contents of the CancelMakegoodRequest callback message
                       required: true
                       content:
                         application/json:
                           schema:
                             $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
-                    responses:   # Expected responses to the CancelMakegoodRequest callback message
+                    responses: # Expected responses to the CancelMakegoodRequest callback message
                       '200':
                         description: Request processed successfully
                         content:
