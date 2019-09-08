@@ -12,8 +12,7 @@ security:
 info:
   version: 4.0.9
   title: Makegoods
-  description: |
-    * TODO
+  description: Todo
   termsOfService: http://placeholderdomain.io/terms/
   contact:
     name: todo
@@ -272,6 +271,58 @@ paths:
                 application/json:
                   schema:
                     $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+
+          callbacks:
+            CreateMakegoodRequest:
+              '{$request.body#/resource}':
+                post:
+                    requestBody:   # Contents of the CreateMakegoodRequest callback message
+                      required: true
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                    responses:   # Expected responses to the CreateMakegoodRequest callback message
+                      '200':
+                        description: Request processed successfully
+                        content:
+                          application/json:
+                            schema:
+                              $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+
+            ConfirmMakegoodNotification:
+              '{$request.body#/resource}':
+                post:
+                    requestBody:   # Contents of the ConfirmMakegoodNotification callback message
+                      required: true
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                    responses:   # Expected responses to the ConfirmMakegoodNotification callback message
+                      '200':
+                        description: Request processed successfully
+                        content:
+                          application/json:
+                            schema:
+                              $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+
+            CancelMakegoodRequest:
+              '{$request.body#/resource}':
+                post:
+                    requestBody:   # Contents of the CancelMakegoodRequest callback message
+                      required: true
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                    responses:   # Expected responses to the CancelMakegoodRequest callback message
+                      '200':
+                        description: Request processed successfully
+                        content:
+                          application/json:
+                            schema:
+                              $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse' 
       get:
         summary: Enumerating subscriptions
         description: Get a list of active subscriptions
