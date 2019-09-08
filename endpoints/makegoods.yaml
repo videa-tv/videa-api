@@ -258,7 +258,7 @@ paths:
             content:
               application/json:
                 schema:
-                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/subscriptionRequest'
+                  $ref: 'schemas/makegoodsSchemas.yaml#/components/schemas/makegoodsSubscriptionRequest'
           responses:
             '201':
               description: Request processed successfully

@@ -300,7 +300,7 @@ paths:
             content:
               application/json:
                 schema:
-                  $ref: 'schemas/commonSchemas.yaml#/components/schemas/subscriptionRequest'
+                  $ref: 'schemas/ordersSchemas.yaml#/components/schemas/ordersSubscriptionRequest'
           responses:
             '201':
               description: Your request was received and an asynchronous response payload will be delivered to the subscriptions counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
