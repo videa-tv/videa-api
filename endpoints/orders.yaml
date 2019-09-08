@@ -314,6 +314,115 @@ paths:
                 application/json:
                   schema:
                     $ref: 'schemas/commonSchemas.yaml#/components/schemas/Error'
+
+          callbacks:
+            AcknowledgeReceiptNotification:
+              '{$request.body#/resource}':
+                post:
+                    requestBody:
+                      description: Contents of the AcknowledgeReceiptNotification callback message
+                      required: true
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                    responses:
+                      '200':
+                        description: Expected response to the AcknowledgeReceiptNotification callback message
+                        content:
+                          application/json:
+                            schema:
+                              $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+
+            CancelOrderResponse:
+              '{$request.body#/resource}':
+                post:
+                    requestBody:
+                      description: Contents of the CancelOrderResponse callback message
+                      required: true
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                    responses:
+                      '200':
+                        description: Expected response to the CancelOrderResponse callback message
+                        content:
+                          application/json:
+                            schema:
+                              $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+
+            ConfirmOrderNotification:
+              '{$request.body#/resource}':
+                post:
+                    requestBody:
+                      description: Contents of the ConfirmOrderNotification callback message
+                      required: true
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                    responses:
+                      '200':
+                        description: Expected response to the ConfirmOrderNotification callback message
+                        content:
+                          application/json:
+                            schema:
+                              $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+
+            CreateOrderResponse:
+              '{$request.body#/resource}':
+                post:
+                    requestBody:
+                      description: Contents of the CreateOrderResponse callback message
+                      required: true
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                    responses:
+                      '200':
+                        description: Expected response to the CreateOrderResponse callback message
+                        content:
+                          application/json:
+                            schema:
+                              $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+
+            OpenOrderNotification:
+              '{$request.body#/resource}':
+                post:
+                    requestBody:
+                      description: Contents of the OpenOrderNotification callback message
+                      required: true
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                    responses:
+                      '200':
+                        description: Expected response to the OpenOrderNotification callback message
+                        content:
+                          application/json:
+                            schema:
+                              $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
+
+            ReviseOrderResponse:
+              '{$request.body#/resource}':
+                post:
+                    requestBody:
+                      description: Contents of the ReviseOrderResponse callback message
+                      required: true
+                      content:
+                        application/json:
+                          schema:
+                            $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
+                    responses:
+                      '200':
+                        description: Expected response to the ReviseOrderResponse callback message
+                        content:
+                          application/json:
+                            schema:
+                              $ref: 'schemas/commonSchemas.yaml#/components/schemas/acceptedResponse'
       get:
         summary: Enumerating subscriptions
         description: The subscriptions GET method gets a list of active subscriptions.
