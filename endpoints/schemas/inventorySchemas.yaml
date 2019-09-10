@@ -100,9 +100,11 @@ components:
               fTCDate:
                 type: string
                 format: date
+                nullable: true
               lTCDate:
                 type: string
                 format: date
+                nullable: true
               hiatusPeriods:
                 type: array
                 items:
