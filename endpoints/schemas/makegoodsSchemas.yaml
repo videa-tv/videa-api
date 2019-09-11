@@ -51,3 +51,21 @@ components:
           description: Max number of items to return
           type: integer #TODO any constraints on this?
           format: int32
+
+    makegoodsSubscriptionRequest:
+      description: A client creates a subscription by issuing a request against the subscriptions resource. The subscription namespace is client-defined via the POST operation.
+      required:
+        - resource
+        - notificationUrl
+      properties:
+        resource:
+          description: Resource path to watch
+          type: string
+          enum: [CreateMakegoodRequest, ConfirmMakegoodNotification, CancelMakegoodRequest]
+        notificationUrl:
+          description: The target web hook URL
+          type: string
+          format: uri
+        clientState:
+          description: Opaque string passed back to the client on all notifications. Callers may choose to use this to provide tagging mechanisms.
+          type: string
