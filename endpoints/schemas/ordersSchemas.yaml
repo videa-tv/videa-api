@@ -48,7 +48,7 @@ components:
           type: string
           format: date-time
         limitCount: 
-          description: Max number of items to return
+          description: Maximum number of items to return
           type: integer #TODO any constraints on this?
           format: int32
 
