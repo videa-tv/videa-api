@@ -42,8 +42,7 @@ info:
   <li>Circuit breaker</li>
   <li>Test and Hudson API keys</li>
   <li>Authentication (JWT, Istio)</li>
-  </ul>
-  </p>"
+  </ul>"
   termsOfService: http://placeholderdomain.io/terms/
   contact:
     name: todo
