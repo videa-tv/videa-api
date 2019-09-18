@@ -12,7 +12,38 @@ security:
 info:
   version: 4.0.9
   title: Orders
-  description: SGS uses the following _methods_ on the orders resource - __Acknowledge__, __Approve__, __Cancel__, __Confirm__, __Create__, __Enumerate__, __notifyOpen__, __Reject__, and __Revise__. APIs follow the convention established by the TVB 3.2 flow and most of these flows are asynchronous. SGS delivers asynchronous requests to the counterparty-exposed endpoint URLs; then, the counterparty uses the orders subscription API to set the URLs. The payload is opaque to this specification because it is encapsulated within the payloadData property and encoded as XML per the TVB 3.2 standard.
+  description: "<h2>Methods</h2>
+  SGS uses the following <i>methods</i> on the orders resource:
+  <ul>
+  <li>Acknowledge</li>
+  <li>Approve</li>
+  <li>Cancel</li>
+  <li>Confirm</li>
+  <li>Create</li>
+  <li>Enumerate</li>
+  <li>notifyOpen</li>
+  <li>Reject</li>
+  <li>Revise</li>
+  </ul>
+  <h2>Asynchronous Requests</h2>
+  APIs follow the convention established by the TVB 3.2 flow and most of these flows are asynchronous. SGS delivers asynchronous requests to the counterparty-exposed endpoint URLs; then, the counterparty uses the orders subscription API to set the URLs. The payload is opaque to this specification because it is encapsulated within the <code>payloadData</code> property and encoded as XML per the TVB 3.2 standard.
+  <h2>Services/Functions</h2>
+  Every orders endpoint requires the following services/functions:
+  <ul>
+  <li>.NET authorization</li>
+  <li>Heartbeat monitoring</li>
+  <li>Test Harness setup</li>
+  <li>Datadog logging to save payload to, and to expose payload from, S3.</li>
+  </ul>
+  <h2>Configurations for the Istio Ingest Gateway</h2>
+  The Istio ingest gateway for endpoints require the following configurations:
+  <ul>
+  <li>Rate limiting</li>
+  <li>Circuit breaker</li>
+  <li>Test and Hudson API keys</li>
+  <li>Authentication (JWT, Istio)</li>
+  </ul>
+  </p>"
   termsOfService: http://placeholderdomain.io/terms/
   contact:
     name: todo
@@ -39,7 +70,7 @@ paths:
               $ref: 'schemas/ordersSchemas.yaml#/components/schemas/enumerateOrdersQuery'
       responses:
         '202':
-          description: Your request was received. An asynchronous response payload will be delivered to the enumerate counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
+          description: "Your request was received. An asynchronous response payload will be delivered to the enumerate counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs:<code>/v1/orders/subscriptions</code>"
           content:
             application/json:
               schema:
@@ -65,7 +96,7 @@ paths:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
         '202':
-          description: Your request was received. An asynchronous response payload will be delivered to the create counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
+          description: "Your request was received. An asynchronous response payload will be delivered to the create counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs:<code>/v1/orders/subscriptions</code>"
           content:
             application/json:
               schema:
@@ -96,7 +127,7 @@ paths:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
         '202':
-          description: Your request was received. An asynchronous response payload will be delivered to the cancel counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
+          description: "Your request was received. An asynchronous response payload will be delivered to the cancel counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs:<code>/v1/orders/subscriptions</code>"
           content:
             application/json:
               schema:
@@ -127,7 +158,7 @@ paths:
               $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
       responses:
         '202':
-          description: Your request was received. An asynchronous response payload will be delivered to the revise counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
+          description: "Your request was received. An asynchronous response payload will be delivered to the revise counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs:<code>/v1/orders/subscriptions</code>"
           content:
             application/json:
               schema:
@@ -153,7 +184,7 @@ paths:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
           '200':
-            description: Your request was received. An asynchronous response payload will be delivered to the acknowledge counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
+            description: "Your request was received. An asynchronous response payload will be delivered to the acknowledge counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs:<code>/v1/orders/subscriptions</code>"
             content:
               application/json:
                 schema:
@@ -184,7 +215,7 @@ paths:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
           '202':
-            description: Your request was received. An asynchronous response payload will be delivered to the approve counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
+            description: "Your request was received. An asynchronous response payload will be delivered to the approve counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs:<code>/v1/orders/subscriptions</code>"
             content:
               application/json:
                 schema:
@@ -215,7 +246,7 @@ paths:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
           '202':
-            description: Your request was received. An asynchronous response payload will be delivered to the confirm counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
+            description: "Your request was received. An asynchronous response payload will be delivered to the confirm counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs:<code>/v1/orders/subscriptions</code>"
             content:
               application/json:
                 schema:
@@ -246,7 +277,7 @@ paths:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
           '202':
-            description: Your request was received. An asynchronous response payload will be delivered to the notifyOpen counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
+            description: "Your request was received. An asynchronous response payload will be delivered to the notifyOpen counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs:<code>/v1/orders/subscriptions</code>"
             content:
               application/json:
                 schema:
@@ -277,7 +308,7 @@ paths:
                 $ref: 'schemas/commonSchemas.yaml#/components/schemas/encodededPayloadWrapper'
         responses:
           '202':
-            description: Your request was received. An asynchronous response payload will be delivered to the reject counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs - /v1/orders/subscriptions.
+            description: "Your request was received. An asynchronous response payload will be delivered to the reject counterparty endpoint. Counterparty endpoint URLs use the following endpoint to set URLs:<code>/v1/orders/subscriptions</code>"
             content:
               application/json:
                 schema:
