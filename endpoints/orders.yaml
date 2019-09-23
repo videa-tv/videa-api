@@ -27,23 +27,8 @@ info:
   </ul>
   <h2>Asynchronous Requests</h2>
   APIs follow the convention established by the TVB 3.2 flow and most of these flows are asynchronous. SGS delivers asynchronous requests to the counterparty-exposed endpoint URLs; then, the counterparty uses the orders subscription API to set the URLs. The payload is opaque to this specification because it is encapsulated within the <code>payloadData</code> property and encoded as XML per the TVB 3.2 standard.
-  <h2>Services/Functions</h2>
-  Every orders endpoint requires the following services/functions:
-  <ul>
-  <li>.NET authorization</li>
-  <li>Heartbeat monitoring</li>
-  <li>Test Harness setup</li>
-  <li>Datadog logging to save payload to, and to expose payload from, S3.</li>
-  </ul>
-  <h2>Configurations for the Istio Ingest Gateway</h2>
-  The Istio ingest gateway for endpoints require the following configurations:
-  <ul>
-  <li>Rate limiting</li>
-  <li>Circuit breaker</li>
-  <li>Test and Hudson API keys</li>
-  <li>Authentication (JWT, Istio)</li>
-  </ul>"
-  termsOfService: http://placeholderdomain.io/terms/
+"
+  termsOfService: https://videa.tv/visitor/
   contact:
     name: todo
     email: mailing-list@tbd.com
