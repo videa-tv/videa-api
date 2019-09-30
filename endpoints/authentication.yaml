@@ -16,7 +16,7 @@ servers:
   - url: https://api.videa.tv
 
 paths:
-  /v1/auth/:
+  /connect/token/:
     post:
       summary: Authenticate and receive an authorization token
       description: Authenticate and receive an authorization token
