@@ -10,7 +10,7 @@ security:
   - bearerAuth: []
 
 info:
-  version: 4.0.9
+  version: 1.0.0
   title: Orders
   description: "<h2>Methods</h2>
   SGS uses the following <i>methods</i> on the orders resource:
@@ -30,14 +30,14 @@ info:
 "
   termsOfService: https://videa.tv/visitor/
   contact:
-    name: todo
-    email: mailing-list@tbd.com
-    url: http://placeholderdomain.io
+    name: Videa API
+    email: apidocs@videa.tv
+    url: https://videa.tv/
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-  - url: http://placeholderdomain.io
+  - url: https://api.videa.tv
 
 paths:
   /v1/orders/enumerate:

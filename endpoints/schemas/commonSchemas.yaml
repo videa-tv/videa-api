@@ -1,16 +1,19 @@
 openapi: "3.0.0"
+
 info:
-  version: 4.0.2
+  version: 1.0.0
   title: Common Schemas
-  description: Common Schemas, based on TIP 4.0.0 documentation
-  termsOfService: http://placeholderdomain.io/terms/ # TODO
+  description: Todo
+  termsOfService: https://videa.tv/visitor/
   contact:
-    name: TIP Forum # TODO
-    email: tip-mailing-list@tbd.com # TODO
-    url: http://placeholderdomain.io # TODO
+    name: Videa API
+    email: apidocs@videa.tv
+    url: https://videa.tv/
   license:
     name: MIT
-    url: https://opensource.org/licenses/MIT # TODO 
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://api.videa.tv
 
 paths: {} # no paths
 

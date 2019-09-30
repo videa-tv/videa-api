@@ -1,7 +1,19 @@
 openapi: 3.0.0
+
 info:
-  version: "1.0.0"
-  title: Inventory
+  version: 1.0.0
+  title: Inventory Schemas
+  description: Todo
+  termsOfService: https://videa.tv/visitor/
+  contact:
+    name: Videa API
+    email: apidocs@videa.tv
+    url: https://videa.tv/
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://api.videa.tv
 
 paths: {}
 

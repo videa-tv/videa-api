@@ -1,0 +1,57 @@
+openapi: "3.0.0"
+
+info:
+  version: 1.0.0
+  title: Authentication Schemas
+  description: ll Videa APIs require an authorization token which is passed in the header of every client request. To obtain the authorization token, clients must first authenticate using their clientId and clientSecret which can be obtained from Videa support.
+  termsOfService: https://videa.tv/visitor/
+  contact:
+    name: Videa API
+    email: apidocs@videa.tv
+    url: https://videa.tv/
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://api.videa.tv
+
+paths: {} # no paths
+
+components:
+  schemas:
+    requestAuthToken:
+      required:
+        - clientId
+        - clientSecret
+        - grantType
+        - scope
+      properties:
+        clientId:
+          description: The id of the client that will perform requests, obtained through Videa 
+          type: string
+        clientSecret:
+          description: The client secret, obtained through Videa website or from Videa support
+          type: string
+        grantType:
+          description: Specify client_credentials
+          type: string
+        scope:
+          description: Resource name of the APIs the client is requesting access to
+          type: string
+          enum: [clientCredentials]
+
+    jwtAccessToken:
+      required:
+        - accessToken
+        - expiresIn
+        - tokenType
+      properties:
+        accessToken:
+          type: string
+        expiresIn:
+          description: Time in seconds that the token will expire
+          type: integer
+          format: int32
+        tokenType:
+          type: string
+          enum: [Bearer]
