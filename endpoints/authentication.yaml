@@ -16,34 +16,24 @@ servers:
   - url: https://api.videa.tv
 
 paths:
-  /v1/auth/clientId/{clientId}/clientSecret/{clientSecret}/grantType/{grantType}/scope/{scope}:
+  /v1/auth/:
     post:
       summary: Authenticate and receive an authorization token
       description: Authenticate and receive an authorization token
-      parameters:
-        - name: clientId
-          in: path
-          description: The id of the client that will perform requests, obtained through Videa website or from Videa support
-          required: true
-        - name: clientSecret
-          in: path
-          description: The client secret, obtained through Videa website or from Videa support
-          required: true
-        - name: grantType
-          in: path
-          description: Specify client_credentials
-          required: true
-        - name: scope
-          in: path
-          description: Resource name of the APIs the client is requesting access to
-          required: true
+      requestBody:
+        description: uploadInventory
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: 'schemas/authenticationSchemas.yaml#/components/schemas/requestAuthToken'
       responses:
         '200':
           description: Request processed successfully
           content:
             application/json:
               schema:
-                $ref: 'schemas/commonSchemas.yaml#/components/schemas/authenticationSchemas'
+                $ref: 'schemas/authenticationSchemas.yaml#/components/schemas/jwtAccessToken'
         default:
           description: Unexpected error occured
           content:

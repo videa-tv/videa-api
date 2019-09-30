@@ -19,12 +19,32 @@ paths: {} # no paths
 
 components:
   schemas:
+    requestAuthToken:
+      required:
+        - clientId
+        - clientSecret
+        - grantType
+        - scope
+      properties:
+        clientId:
+          description: The id of the client that will perform requests, obtained through Videa 
+          type: string
+        clientSecret:
+          description: The client secret, obtained through Videa website or from Videa support
+          type: string
+        grantType:
+          description: Specify client_credentials
+          type: string
+        scope:
+          description: Resource name of the APIs the client is requesting access to
+          type: string
+          enum: [clientCredentials]
+
     jwtAccessToken:
       required:
         - accessToken
         - expiresIn
         - tokenType
-      description: Authorization token, 
       properties:
         accessToken:
           type: string
