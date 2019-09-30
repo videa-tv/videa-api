@@ -1,19 +1,19 @@
 openapi: "3.0.0"
+
 info:
-  version: 4.0.2
-  title: Orders
-  description: |
-    * TODO
-  termsOfService: http://placeholderdomain.io/terms/
+  version: 1.0.0
+  title: Orders Schemas
+  description: Todo
+  termsOfService: https://videa.tv/visitor/
   contact:
-    name: todo
-    email: mailing-list@tbd.com
-    url: http://placeholderdomain.io
+    name: Videa API
+    email: apidocs@videa.tv
+    url: https://videa.tv/
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-  - url: http://placeholderdomain.io
+  - url: https://api.videa.tv
 
 paths: {} # no paths
 
