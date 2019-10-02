@@ -107,8 +107,18 @@ components:
                   type: string
               programStartTime:
                 type: string
+              programStartTimeSeconds:
+                description: Local time in seconds from midnight. Enables handling of Daylight Savings Time
+                type: integer
+                format: int32
+                nullable: true
               programEndTime:
                 type: string
+              programEndTimeSeconds:
+                description: Local time in seconds from midnight. Enables handling of Daylight Savings Time
+                type: integer
+                format: int32
+                nullable: true
               fTCDate:
                 type: string
                 format: date
