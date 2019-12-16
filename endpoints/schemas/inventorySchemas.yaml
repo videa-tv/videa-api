@@ -76,6 +76,15 @@ components:
                     format: int32
                   mediaOutletName:
                     type: string
+                  mediaOutletStartOfDay:
+                    description: Local time used as start of day (Broadcast start of day for Linear)
+                    type: string
+                    nullable: true
+                  mediaOutletStartOfDaySeconds:
+                    description: Local time in seconds from midnight
+                    type: integer
+                    format: int32
+                    nullable: true
               dayparts:
                 type: array
                 items:
