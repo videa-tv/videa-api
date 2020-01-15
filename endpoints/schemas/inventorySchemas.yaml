@@ -231,6 +231,12 @@ components:
                           type: string
                         isDefault:
                           type: boolean
+                        businessType:
+                          type: string
+                          nullable: true
+                        rateCardType:
+                          type: string
+                          nullable: true
                         rates:
                           type: array
                           items:
